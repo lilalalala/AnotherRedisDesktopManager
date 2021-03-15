@@ -36,6 +36,8 @@
     "tunnel-ssh": "^4.1.4",
     "vue": "^2.5.2",
     "vue-i18n": "^8.7.0",
+    "vue-json-editor": "^1.4.3",
+    "vue-json-pretty": "^1.7.1",
     "vue-json-viewer": "git+https://github.com/qishibo/vue-json-viewer.git"
   },
   "devDependencies": {

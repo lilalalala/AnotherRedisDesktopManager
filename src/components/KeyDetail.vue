@@ -30,6 +30,7 @@ import KeyContentHash from '@/components/KeyContentHash';
 import KeyContentSet from '@/components/KeyContentSet';
 import KeyContentZset from '@/components/KeyContentZset';
 import KeyContentList from '@/components/KeyContentList';
+import KeyContentReJSONRL from '@/components/KeyContentReJSONRL';
 
 export default {
   data() {
@@ -37,7 +38,7 @@ export default {
   },
   props: ['client', 'redisKey', 'keyType'],
   components: {
-    KeyHeader, KeyContentString, KeyContentHash, KeyContentSet, KeyContentZset, KeyContentList
+    KeyHeader, KeyContentString, KeyContentHash, KeyContentSet, KeyContentZset, KeyContentList, KeyContentReJSONRL
   },
   computed: {
     componentName() {
@@ -52,6 +53,7 @@ export default {
         zset  : 'KeyContentZset',
         set   : 'KeyContentSet',
         list  : 'KeyContentList',
+        'ReJSON-RL'  : 'KeyContentReJSONRL'
       };
 
       if (map[keyType]) {

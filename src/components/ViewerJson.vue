@@ -5,22 +5,23 @@
   </div>
   <JsonViewer
     v-if='show'
-    :value="newContent"
-    :expand-depth="previousDeep"
+    v-model="newContent"
+    :showBtns="!1"
+    @json-change="updateContent"
     >
   </JsonViewer>
 </div>
 </template>
 
 <script type="text/javascript">
-import JsonViewer from 'vue-json-viewer'
+import JsonViewer from 'vue-json-editor'
 
 export default {
   data() {
     return {
       show: true,
       previousDeep: 3,
-      collapseText: 'collapse_all',
+      collapseText: 'collapse_all'
     };
   },
   components: {JsonViewer},
@@ -49,6 +50,12 @@ export default {
         this.show = true;
       });
     },
+
+    updateContent(value) {
+      let newContent, _value= JSON.stringify(value); 
+      newContent = this.contentVisible ? Buffer.from(_value) : this.$util.xToBuffer(_value);
+      this.$emit('updateContent', newContent);
+    }
   },
 }
 </script>
