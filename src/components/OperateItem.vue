@@ -93,6 +93,7 @@
 </template>
 
 <script type="text/javascript">
+import RedisJson from "@/redisJson";
 export default {
   data() {
     return {
@@ -107,7 +108,7 @@ export default {
       newKeyName: '',
       selectedNewKeyType: 'string',
       newKeyTypes: {
-        String: 'string', Hash: 'hash', List: 'list', Set: 'set', Zset: 'zset',
+        String: 'string', Hash: 'hash', List: 'list', Set: 'set', Zset: 'zset', 'ReJSON-RL': 'ReJSON-RL'
       },
     };
   },
@@ -210,6 +211,9 @@ export default {
         }
         case 'zset': {
           return this.client.zadd(key, 0, 'member');
+        }
+        case 'ReJSON-RL': {
+          return RedisJson.jsonSet(this.client, key, '.', '{}');
         }
       }
     },
